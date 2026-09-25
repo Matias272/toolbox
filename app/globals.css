@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
+/* 1. BASE DESIGN TOKENS (CSS Variables) */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
 }
 
-@theme inline {
+/* Dark mode overrides */
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+}
+
+/* 2. TAILWIND THEME EXTENSIONS */
+@theme {
+  /* Binding theme tokens to CSS variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Adding static brand colors directly */
+  --color-brand-gold: #f59e0b;
 }
-
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  font-family: "Oswald", sans-serif;
+}
+
+/* 3. CUSTOM UTILITY CLASSES */
+@utility glass-panel {
+  background-color: rgb(255 255 255 / 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 0.1);
 }
